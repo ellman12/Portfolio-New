@@ -1,5 +1,5 @@
-import TopSection from "./components/TopSection.tsx";
-import AboutMeSection from "./components/AboutMeSection.tsx";
+import TopSection from "./components/Sections/TopSection.tsx";
+import AboutMeSection from "./components/Sections/AboutMeSection.tsx";
 
 export default function Home() {
     return (

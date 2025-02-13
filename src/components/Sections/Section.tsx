@@ -1,5 +1,5 @@
 import {FC, ReactNode} from "react";
-import H2 from "./H2.tsx";
+import H2 from "../H2.tsx";
 
 interface Props {
     icon: ReactNode;

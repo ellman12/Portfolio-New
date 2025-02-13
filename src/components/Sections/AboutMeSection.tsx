@@ -1,6 +1,6 @@
 import PersonIcon from "@mui/icons-material/Person";
 import Section from "./Section.tsx";
-import Tidbit from "./Tidbit.tsx";
+import Tidbit from "../Tidbit.tsx";
 import ChatIcon from "@mui/icons-material/Chat";
 import PlaceIcon from "@mui/icons-material/Place";
 import SchoolIcon from "@mui/icons-material/School";

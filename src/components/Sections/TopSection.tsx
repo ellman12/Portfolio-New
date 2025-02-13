@@ -1,5 +1,5 @@
-import H2 from "./H2.tsx";
-import Avatar from "./Avatar.tsx";
+import H2 from "../H2.tsx";
+import Avatar from "../Avatar.tsx";
 import {Button, IconButton} from "@mui/material";
 import EmailIcon from "@mui/icons-material/Email";
 import GitHubIcon from "@mui/icons-material/GitHub";
