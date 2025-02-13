@@ -3,7 +3,8 @@ import DescriptionIcon from "@mui/icons-material/Description";
 import EmailIcon from "@mui/icons-material/Email";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import {Button} from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import {Button, IconButton} from "@mui/material";
 
 export default function TopSection() {
     return (
@@ -17,8 +18,12 @@ export default function TopSection() {
                     <Button variant="contained" color="primary" href="https://github.com/ellman12/ellman12/blob/main/Elliott%20DuCharme%20Resume.pdf" startIcon={<DescriptionIcon/>}>Resume</Button>
                     <Button variant="contained" color="error" href="mailto:ellduc4@gmail.com" startIcon={<EmailIcon/>}>Email</Button>
                     <Button variant="contained" color="info" href="https://www.linkedin.com/in/elliott-ducharme/" startIcon={<LinkedInIcon/>}>LinkedIn</Button>
-                    <Button variant="contained" color="secondary" href="https://github.com/ellman12/" startIcon={<GitHubIcon/>}>GitHub</Button>
+                    <Button variant="contained" color="GitHub" href="https://github.com/ellman12/" startIcon={<GitHubIcon/>}>GitHub</Button>
                 </div>
+
+                <IconButton size="large" color="White" onClick={() => document.getElementById("about-me")!.scrollIntoView({behavior: "smooth", block: "start"})}>
+                    <ExpandMoreIcon fontSize="large"/>
+                </IconButton>
             </div>
         </section>
     );
