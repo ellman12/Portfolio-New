@@ -9,7 +9,7 @@ interface Props {
 
 const Section: FC<Props> = ({icon, title, children}) => {
     return (
-        <section id="about-me" className="border-y border-white p-4 flex flex-col">
+        <section id="about-me" className="border-t-2 border-white px-4 pt-4 pb-8 flex flex-col">
             <div className="flex flex-row items-center gap-4 mb-6">
                 {icon}
                 <H2>{title}</H2>
