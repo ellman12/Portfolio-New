@@ -1,6 +1,7 @@
 import TopSection from "./components/Sections/TopSection.tsx";
 import AboutMeSection from "./components/Sections/AboutMeSection.tsx";
 import WorkExperienceSection from "./components/Sections/WorkExperience/WorkExperienceSection.tsx";
+import ProjectsSection from "./components/Sections/Projects/ProjectsSection.tsx";
 
 export default function Home() {
     return (
@@ -10,6 +11,7 @@ export default function Home() {
             <main>
                 <AboutMeSection/>
                 <WorkExperienceSection/>
+                <ProjectsSection/>
             </main>
         </div>
     );

@@ -3,17 +3,23 @@ import {OverridableStringUnion} from "@mui/types";
 import {TimelineConnector, TimelineContent, TimelineDot, TimelineDotPropsColorOverrides, TimelineItem, TimelineOppositeContent, TimelineSeparator} from "@mui/lab";
 
 type Props = {
-    dateRange: string;
+    startDate: string;
+    endDate: string;
     title: string;
     color: OverridableStringUnion<"primary" | "secondary" | "error" | "warning" | "info" | "success", TimelineDotPropsColorOverrides>;
     lastItem?: boolean;
     children: ReactNode;
 } & Omit<ComponentProps<typeof TimelineDot>, "color">;
 
-const WorkTimelineItem: FC<Props> = ({dateRange, title, lastItem = false, color, children}) => {
+const WorkTimelineItem: FC<Props> = ({startDate, endDate, title, lastItem = false, color, children}) => {
     return (
         <TimelineItem>
-            <TimelineOppositeContent className="text-nowrap">{dateRange}</TimelineOppositeContent>
+            <TimelineOppositeContent>
+                <div className="inline-flex flex-row items-center flex-wrap sm:flex-nowrap">
+                    <span className="text-nowrap">{startDate} —</span>
+                    <span className="text-nowrap">{endDate}</span>
+                </div>
+            </TimelineOppositeContent>
             <TimelineSeparator>
                 <TimelineDot color={color}/>
                 {lastItem ? <></> : <TimelineConnector/>}
