@@ -66,8 +66,7 @@ const Projects: Project[] = [
         images: [
             ["Dish Up/Dish Up 2.png", "Viewing a Recipe"],
             ["Dish Up/Dish Up 3.png", "Editing a Recipe, and Showing Off Markdown Support"],
-            ["Dish Up/Dish Up 4.png", "Viewing Your Folders and Adding a Recipe to a Folder"],
-            ["Dish Up/Dish Up 1.png", "User Account Creation"]
+            ["Dish Up/Dish Up 4.png", "Viewing Your Folders and Adding a Recipe to a Folder"]
         ],
         significance: 80,
         startDate: new Date("2022-10-8"),

@@ -11,12 +11,12 @@ type Props = {
     children: ReactNode;
 } & Omit<ComponentProps<typeof TimelineDot>, "color">;
 
-const WorkTimelineItem: FC<Props> = ({startDate, endDate, title, lastItem = false, color, children}) => {
+const SectionTimelineItem: FC<Props> = ({startDate, endDate, title, lastItem = false, color, children}) => {
     return (
         <TimelineItem>
             <TimelineOppositeContent>
                 <div className="inline-flex flex-row items-center flex-wrap sm:flex-nowrap">
-                    <span className="text-nowrap">{startDate} —</span>
+                    <span className="text-nowrap">{startDate}—</span>
                     <span className="text-nowrap">{endDate}</span>
                 </div>
             </TimelineOppositeContent>
@@ -37,4 +37,4 @@ const WorkTimelineItem: FC<Props> = ({startDate, endDate, title, lastItem = fals
     );
 };
 
-export default WorkTimelineItem;
+export default SectionTimelineItem;
