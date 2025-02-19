@@ -7,4 +7,5 @@
 
 :root {
     color: white;
+    user-select: none;
 }
