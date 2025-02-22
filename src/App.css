@@ -10,6 +10,17 @@
     user-select: none;
 }
 
-li::before {
-    display: none;
+@keyframes shrinkWidth {
+    from {
+    }
+    to {
+        width: 0;
+        flex: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+}
+
+.shrink {
+    animation: shrinkWidth 0.3s ease-in-out forwards;
 }
