@@ -19,7 +19,6 @@ const Projects: Project[] = [
         images: [
             ["MM/Home.png", "Home Page"],
             ["MM/Import.png", "Import Page"],
-            ["MM/FullscreenViewer.png", "Viewing a Photo"],
             ["MM/VideoPlayer.png", "Viewing a Video"],
             ["MM/Memories.png", "Memories Page"],
             ["MM/Backups.png", "Backups Page"],
@@ -117,8 +116,6 @@ const Projects: Project[] = [
         images: [
             ["PGG/PGG 1.png", "PGG Help Output"],
             ["PGG/PGG 2.png", "Guessing a Password"],
-            ["PGG/PGG 3.png", "Guessing a Password with Series Mode"],
-            ["PGG/PGG 4.png", "Guessing a Password with Increment Mode"]
         ],
         significance: 20,
         startDate: new Date("2021-3-24"),
