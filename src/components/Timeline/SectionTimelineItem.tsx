@@ -1,7 +1,6 @@
 import {ComponentProps, FC, ReactNode} from "react";
 import {OverridableStringUnion} from "@mui/types";
 import {TimelineConnector, TimelineContent, TimelineDot, TimelineDotPropsColorOverrides, TimelineItem, TimelineOppositeContent, TimelineSeparator} from "@mui/lab";
-import ScrollOnceAnimation from "../ScrollOnceAnimation.tsx";
 
 type Props = {
     startDate: string;
@@ -15,29 +14,27 @@ type Props = {
 
 const SectionTimelineItem: FC<Props> = ({startDate, endDate, title, expanded = false, lastItem = false, color, children}) => {
     return (
-        <ScrollOnceAnimation>
-            <TimelineItem className={`${expanded ? "my-4" : ""}`}>
-                {!expanded && <TimelineOppositeContent>
-					<div className="inline-flex flex-row items-center flex-wrap sm:flex-nowrap">
-						<span className="text-nowrap">{startDate}—</span>
-						<span className="text-nowrap">{endDate}</span>
-					</div>
-				</TimelineOppositeContent>}
-                {!expanded && <TimelineSeparator>
-                    <TimelineDot color={color}/>
-                    {lastItem ? <></> : <TimelineConnector/>}
-                </TimelineSeparator>}
-                <TimelineContent className={`${expanded ? "h-screen flex flex-col items-center bg-[#101114] justify-center" : ""}`}>
-                    <div className="mb-4">
-                        <p className="font-bold">{title}</p>
+        <TimelineItem className={`${expanded ? "my-4" : ""}`}>
+            {!expanded && <TimelineOppositeContent>
+				<div className="inline-flex flex-row items-center flex-wrap sm:flex-nowrap">
+					<span className="text-nowrap">{startDate}—</span>
+					<span className="text-nowrap">{endDate}</span>
+				</div>
+			</TimelineOppositeContent>}
+            {!expanded && <TimelineSeparator>
+				<TimelineDot color={color}/>
+                {lastItem ? <></> : <TimelineConnector/>}
+			</TimelineSeparator>}
+            <TimelineContent>
+                <div className="mb-4">
+                    <p className="font-bold">{title}</p>
 
-                        <div className="pl-2">
-                            {children}
-                        </div>
+                    <div className="pl-2">
+                        {children}
                     </div>
-                </TimelineContent>
-            </TimelineItem>
-        </ScrollOnceAnimation>
+                </div>
+            </TimelineContent>
+        </TimelineItem>
     );
 };
 
