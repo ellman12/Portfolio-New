@@ -16,7 +16,7 @@ type Props = {
 const SectionTimelineItem: FC<Props> = ({startDate, endDate, title, expanded = false, lastItem = false, color, children}) => {
     return (
         <ScrollOnceAnimation>
-            <TimelineItem className={`${expanded ? "inline" : "flex"}`}>
+            <TimelineItem className={`${expanded ? "my-4" : ""}`}>
                 {!expanded && <TimelineOppositeContent>
 					<div className="inline-flex flex-row items-center flex-wrap sm:flex-nowrap">
 						<span className="text-nowrap">{startDate}—</span>
@@ -27,7 +27,7 @@ const SectionTimelineItem: FC<Props> = ({startDate, endDate, title, expanded = f
                     <TimelineDot color={color}/>
                     {lastItem ? <></> : <TimelineConnector/>}
                 </TimelineSeparator>}
-                <TimelineContent>
+                <TimelineContent className={`${expanded ? "h-screen flex flex-col items-center bg-[#101114] justify-center" : ""}`}>
                     <div className="mb-4">
                         <p className="font-bold">{title}</p>
 

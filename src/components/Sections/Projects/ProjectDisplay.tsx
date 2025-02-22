@@ -13,7 +13,7 @@ const ProjectDisplay: FC<Props> = ({project, lastItem}) => {
     return (
         <div onClick={() => setExpanded(!expanded)}>
             <SectionTimelineItem startDate={project.startDate.toLocaleDateString()} endDate={project.endDate?.toLocaleDateString() ?? "Present"} title={project.name} color="primary" lastItem={lastItem} expanded={expanded}>
-                <div className={`flex flex-col gap-4 ${expanded ? "flex-[50]" : ""}`}>
+                <div className={`flex flex-col gap-4`}>
                     <div dangerouslySetInnerHTML={{__html: project.briefDesc}}/>
 
                     {expanded && <div dangerouslySetInnerHTML={{__html: project.longDesc}}/>}
