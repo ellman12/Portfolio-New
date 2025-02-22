@@ -1,6 +1,8 @@
 import {FC, useState} from "react";
 import {Project} from "./Projects.ts";
-import SectionTimelineItem from "../../Timeline/SectionTimelineItem.tsx";
+import {TimelineConnector, TimelineContent, TimelineDot, TimelineItem, TimelineOppositeContent, TimelineSeparator} from "@mui/lab";
+import {motion} from "framer-motion";
+import ScrollOnceAnimation from "../../ScrollOnceAnimation.tsx";
 
 interface Props {
     project: Project;
@@ -8,21 +10,45 @@ interface Props {
 }
 
 const ProjectDisplay: FC<Props> = ({project, lastItem}) => {
-    const [expanded, setExpanded] = useState(false);
+    const [step, setStep] = useState(0);
 
     return (
-        <div onClick={() => setExpanded(!expanded)}>
-            <SectionTimelineItem startDate={project.startDate.toLocaleDateString()} endDate={project.endDate?.toLocaleDateString() ?? "Present"} title={project.name} color="primary" lastItem={lastItem} expanded={expanded}>
-                <div className={`flex flex-col gap-4 ${expanded ? "flex-[50]" : ""}`}>
-                    <div dangerouslySetInnerHTML={{__html: project.briefDesc}}/>
+        <ScrollOnceAnimation>
+            <TimelineItem onClick={() => setStep(step > 0 ? 0 : 1)}>
+                <TimelineOppositeContent className={step === 2 ? "shrink" : ""}>
+                    <motion.div
+                        initial={{opacity: 1}}
+                        animate={step >= 1 ? {opacity: 0, flexGrow: 0, padding: 0} : {opacity: 1, flexGrow: 0.28}}
+                        transition={{duration: 0.3, ease: "easeInOut"}}
+                        className="inline-flex flex-row items-center flex-wrap sm:flex-nowrap"
+                        onAnimationComplete={() => {
+                            if (step === 1)
+                                setStep(2);
+                        }}
+                    >
+                        <span className="text-nowrap">{project.startDate.toLocaleDateString()}—</span>
+                        <span className="text-nowrap">{project.endDate?.toLocaleDateString() ?? "Present"}</span>
+                    </motion.div>
+                </TimelineOppositeContent>
+                <TimelineSeparator className={step === 2 ? "shrink" : ""}>
+                    <TimelineDot color={"primary"}/>
+                    {lastItem ? <></> : <TimelineConnector/>}
+                </TimelineSeparator>
+                <TimelineContent>
+                    <div className="mb-4">
+                        <p className="font-bold">{project.name}</p>
 
-                    {expanded && <div dangerouslySetInnerHTML={{__html: project.longDesc}}/>}
+                        <div className="pl-2">
+                            <div className={`flex flex-col gap-4`}>
+                                <div dangerouslySetInnerHTML={{__html: project.briefDesc}}/>
 
-                    {/* a image slideshow and the alt text is shown below each one */}
-
-                </div>
-            </SectionTimelineItem>
-        </div>
+                                {step === 3 && <div dangerouslySetInnerHTML={{__html: project.longDesc}}/>}
+                            </div>
+                        </div>
+                    </div>
+                </TimelineContent>
+            </TimelineItem>
+        </ScrollOnceAnimation>
     );
 };
 
