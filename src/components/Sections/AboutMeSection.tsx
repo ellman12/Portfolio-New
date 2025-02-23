@@ -23,10 +23,17 @@ export default function AboutMeSection() {
             <div className="flex flex-col gap-4">
                 <ScrollOnceAnimation>
                     <div className="grid grid-cols-2 gap-4 sm:px-8 mb-4">
-                        <Tidbit icon={<WorkIcon/>} text="KBR — Software Engineer"/>
-                        <Tidbit icon={<PlaceIcon/>} text="Sioux Falls, SD"/>
-                        <Tidbit icon={<SchoolIcon/>} text="B.S. Computer Science, Dakota State University"/>
-                        <Tidbit icon={<ChatIcon/>} text="He/him"/>
+                        <Tidbit icon={<WorkIcon/>}>KBR — Software Engineer</Tidbit>
+                        <Tidbit icon={<PlaceIcon/>}>Sioux Falls, SD</Tidbit>
+
+                        <Tidbit icon={<SchoolIcon/>}>
+                            <div className="flex flex-row flex-wrap">
+                                <span>B.S. Computer Science,&nbsp;</span>
+                                <span>Dakota State University</span>
+                            </div>
+                        </Tidbit>
+
+                        <Tidbit icon={<ChatIcon/>}>He/him</Tidbit>
                     </div>
                 </ScrollOnceAnimation>
 
@@ -35,15 +42,15 @@ export default function AboutMeSection() {
 
                     <ScrollOnceAnimation>
                         <div className="mt-6 grid grid-cols-2 gap-4 sm:px-8 mb-4">
-                            <Tidbit icon={<AdsClickIcon/>} text="Archery"/>
-                            <Tidbit icon={<PedalBikeIcon/>} text="Biking"/>
-                            <Tidbit icon={<OutdoorGrillIcon/>} text="Cooking"/>
-                            <Tidbit icon={<CodeIcon/>} text="Coding"/>
-                            <Tidbit icon={<CasinoIcon/>} text="D&D"/>
-                            <Tidbit icon={<FitnessCenterIcon/>} text="Exercise"/>
-                            <Tidbit icon={<SportsEsportsIcon/>} text="Gaming"/>
-                            <Tidbit icon={<HikingIcon/>} text="Hiking"/>
-                            <Tidbit icon={<PrecisionManufacturingIcon/>} text="Robotics"/>
+                            <Tidbit icon={<AdsClickIcon/>}>Archery</Tidbit>
+                            <Tidbit icon={<PedalBikeIcon/>}>Biking</Tidbit>
+                            <Tidbit icon={<OutdoorGrillIcon/>}>Cooking</Tidbit>
+                            <Tidbit icon={<CodeIcon/>}>Coding</Tidbit>
+                            <Tidbit icon={<CasinoIcon/>}>D&D</Tidbit>
+                            <Tidbit icon={<FitnessCenterIcon/>}>Exercise</Tidbit>
+                            <Tidbit icon={<SportsEsportsIcon/>}>Gaming</Tidbit>
+                            <Tidbit icon={<HikingIcon/>}>Hiking</Tidbit>
+                            <Tidbit icon={<PrecisionManufacturingIcon/>}>Robotics</Tidbit>
                         </div>
                     </ScrollOnceAnimation>
                 </ScrollOnceAnimation>

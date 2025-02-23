@@ -2,14 +2,14 @@ import {FC, ReactNode} from "react";
 
 interface Props {
     icon: ReactNode;
-    text: string;
+    children: ReactNode;
 }
 
-const Tidbit: FC<Props> = ({icon, text}) => {
+const Tidbit: FC<Props> = ({icon, children}) => {
     return (
         <div className="flex flex-row items-center gap-4">
             {icon}
-            {text}
+            {children}
         </div>
     );
 };
