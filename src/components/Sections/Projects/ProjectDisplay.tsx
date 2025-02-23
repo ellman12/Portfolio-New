@@ -13,12 +13,18 @@ interface Props {
 const ProjectDisplay: FC<Props> = ({project, lastItem}) => {
     const [expanded, setExpanded] = useState(false);
 
+    const dateOptions: Intl.DateTimeFormatOptions = {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric"
+    };
+
     return (
         <div onClick={() => setExpanded(!expanded)}>
             <ScrollOnceAnimation>
-                {!expanded && <SectionTimelineItem startDate={project.startDate.toLocaleDateString()} endDate={project.endDate?.toLocaleDateString() ?? "Present"} title={project.name} color="primary" lastItem={lastItem} expanded={expanded}>
+                {!expanded && <SectionTimelineItem startDate={project.startDate.toLocaleDateString(undefined, dateOptions)} endDate={project.endDate?.toLocaleDateString(undefined, dateOptions) ?? "Present"} title={project.name} color="primary" lastItem={lastItem} expanded={expanded}>
 					<div className={`flex flex-col gap-4`}>
-						<div dangerouslySetInnerHTML={{__html: project.briefDesc}}/>
+						<div className="text-sm md:text-base" dangerouslySetInnerHTML={{__html: project.briefDesc}}/>
 					</div>
 				</SectionTimelineItem>}
             </ScrollOnceAnimation>

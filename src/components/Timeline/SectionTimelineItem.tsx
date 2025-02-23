@@ -16,7 +16,7 @@ const SectionTimelineItem: FC<Props> = ({startDate, endDate, title, expanded = f
     return (
         <TimelineItem className={`${expanded ? "my-4" : ""}`}>
             {!expanded && <TimelineOppositeContent>
-				<div className="inline-flex flex-row items-center flex-wrap sm:flex-nowrap">
+				<div className="inline-flex flex-row justify-end md:items-center flex-wrap md:flex-nowrap text-xs lg:text-base">
 					<span className="text-nowrap">{startDate}—</span>
 					<span className="text-nowrap">{endDate}</span>
 				</div>
@@ -27,9 +27,9 @@ const SectionTimelineItem: FC<Props> = ({startDate, endDate, title, expanded = f
 			</TimelineSeparator>}
             <TimelineContent>
                 <div className="mb-4">
-                    <p className="font-bold">{title}</p>
+                    <p className="font-bold text-sm md:text-base">{title}</p>
 
-                    <div className="pl-2">
+                    <div className="md:pl-2">
                         {children}
                     </div>
                 </div>
