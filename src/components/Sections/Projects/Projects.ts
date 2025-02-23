@@ -116,6 +116,8 @@ const Projects: Project[] = [
         images: [
             ["PGG/PGG 1.png", "PGG Help Output"],
             ["PGG/PGG 2.png", "Guessing a Password"],
+            ["PGG/PGG 3.png", "Guessing a Password with Series Mode"],
+            ["PGG/PGG 4.png", "Guessing a Password with Increment Mode"]
         ],
         significance: 20,
         startDate: new Date("2021-3-24"),
