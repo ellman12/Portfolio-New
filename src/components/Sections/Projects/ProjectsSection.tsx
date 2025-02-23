@@ -24,7 +24,7 @@ export default function ProjectsSection() {
 
             <SectionTimeline>
                 {Projects.sort((a, b) => a.startDate > b.startDate ? 1 : -1).map((project, index) => (
-                    <ProjectDisplay key={project.name} handleProjectClick={handleProjectClick} project={project} lastItem={index === Projects.length - 1}/>
+                    <ProjectDisplay key={project.name} expandedProjects={expandedProjects} handleProjectClick={handleProjectClick} project={project} lastItem={index === Projects.length - 1}/>
                 ))}
             </SectionTimeline>
         </Section>

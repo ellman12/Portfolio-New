@@ -8,11 +8,12 @@ import {AnimatePresence, motion} from "framer-motion";
 
 interface Props {
     project: Project;
+    expandedProjects: Project[];
     handleProjectClick: (projects: Project, add: boolean) => void;
     lastItem: boolean;
 }
 
-const ProjectDisplay: FC<Props> = ({project, handleProjectClick, lastItem}) => {
+const ProjectDisplay: FC<Props> = ({project, handleProjectClick, expandedProjects, lastItem}) => {
     const [step, setStep] = useState<"closed" | "expanding" | "expanded" | "closing">("closed");
 
     const initMaxHeight = 50;
@@ -39,9 +40,9 @@ const ProjectDisplay: FC<Props> = ({project, handleProjectClick, lastItem}) => {
 					initial={{maxHeight: initMaxHeight}}
 					animate={step === "expanding" || step === "expanded" ? {maxHeight: 1000} : {maxHeight: initMaxHeight}}
 					onClick={() => {
-                        if (step === "expanding")
+                        if (step === "expanding" && expandedProjects.find(p => p.name === project.name) !== undefined) {
                             handleProjectClick(project, false);
-                        else
+                        } else
                             setStep("closing");
                     }}
 					transition={{duration: 0.6, ease: "easeInOut"}}
