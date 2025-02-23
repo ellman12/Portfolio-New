@@ -4,7 +4,7 @@ import SectionTimelineItem from "../../Timeline/SectionTimelineItem.tsx";
 import ProjectCarousel from "./ProjectCarousel.tsx";
 import H3 from "../../H3.tsx";
 import ScrollOnceAnimation from "../../ScrollOnceAnimation.tsx";
-import {motion} from "framer-motion";
+import {AnimatePresence, motion} from "framer-motion";
 
 interface Props {
     project: Project;
@@ -14,22 +14,13 @@ interface Props {
 const ProjectDisplay: FC<Props> = ({project, lastItem}) => {
     const [step, setStep] = useState<"closed" | "expanding" | "expanded" | "closing">("closed");
 
-    const initScaleY = 0.4;
+    const initMaxHeight = 50;
 
     const dateOptions: Intl.DateTimeFormatOptions = {
         day: "2-digit",
         month: "2-digit",
         year: "numeric"
     };
-
-    function getAnimation() {
-        if (step === "expanding" || step === "expanded")
-            return {scaleY: 1};
-        else if (step === "closing")
-            return {scaleY: 0};
-        else if (step === "closed")
-            return {scaleY: 0};
-    }
 
     return (
         <div>
@@ -41,29 +32,36 @@ const ProjectDisplay: FC<Props> = ({project, lastItem}) => {
 				</SectionTimelineItem>}
             </ScrollOnceAnimation>
 
-            {step !== "closed" && <motion.div
-				initial={{scaleY: initScaleY}}
-				animate={getAnimation()}
-				onClick={() => setStep("closing")}
-				transition={{duration: 0.3, ease: "easeInOut"}}
-				onAnimationComplete={() => {
-                    if (step === "expanding")
-                        setStep("expanded");
-                    else if (step === "expanded")
-                        setStep("closing");
-                    else if (step === "closing")
-                        setStep("closed");
-                }}
-				className={`bg-[#101114] origin-top flex flex-col gap-4 my-4 p-4`}
-			>
-				<H3>{project.name}</H3>
+            <AnimatePresence initial={false}>
+                {step !== "closed" && <motion.div
+					key={project.name}
+					initial={{maxHeight: initMaxHeight}}
+					animate={step === "expanding" || step === "expanded" ? {maxHeight: 1000} : {maxHeight: initMaxHeight}}
+					onClick={() => {
+                        if (step !== "expanding")
+                            setStep("closing");
+                    }}
+					transition={{duration: 0.6, ease: "easeInOut"}}
+					exit={{maxHeight: initMaxHeight}}
+					onAnimationComplete={() => {
+                        if (step === "expanding")
+                            setStep("expanded");
+                        else if (step === "expanded")
+                            setStep("closing");
+                        else if (step === "closing")
+                            setStep("closed");
+                    }}
+					className={`bg-[#101114] overflow-hidden flex flex-col gap-4 my-4 p-4`}
+				>
+					<H3>{project.name}</H3>
 
-				<div dangerouslySetInnerHTML={{__html: project.briefDesc}}/>
+					<div dangerouslySetInnerHTML={{__html: project.briefDesc}}/>
 
-                {<div dangerouslySetInnerHTML={{__html: project.longDesc}}/>}
+					<div dangerouslySetInnerHTML={{__html: project.longDesc}}/>
 
-                {<ProjectCarousel project={project}/>}
-			</motion.div>}
+                    {<ProjectCarousel project={project}/>}
+				</motion.div>}
+            </AnimatePresence>
         </div>
     );
 };
