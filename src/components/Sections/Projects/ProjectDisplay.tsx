@@ -4,6 +4,7 @@ import SectionTimelineItem from "../../Timeline/SectionTimelineItem.tsx";
 import ProjectCarousel from "./ProjectCarousel.tsx";
 import H3 from "../../H3.tsx";
 import ScrollOnceAnimation from "../../ScrollOnceAnimation.tsx";
+import {motion} from "framer-motion";
 
 interface Props {
     project: Project;
@@ -11,7 +12,9 @@ interface Props {
 }
 
 const ProjectDisplay: FC<Props> = ({project, lastItem}) => {
-    const [expanded, setExpanded] = useState(false);
+    const [step, setStep] = useState<"closed" | "expanding" | "expanded" | "closing">("closed");
+
+    const initScaleY = 0.4;
 
     const dateOptions: Intl.DateTimeFormatOptions = {
         day: "2-digit",
@@ -19,25 +22,48 @@ const ProjectDisplay: FC<Props> = ({project, lastItem}) => {
         year: "numeric"
     };
 
+    function getAnimation() {
+        if (step === "expanding" || step === "expanded")
+            return {scaleY: 1};
+        else if (step === "closing")
+            return {scaleY: 0};
+        else if (step === "closed")
+            return {scaleY: 0};
+    }
+
     return (
-        <div onClick={() => setExpanded(!expanded)}>
+        <div>
             <ScrollOnceAnimation>
-                {!expanded && <SectionTimelineItem startDate={project.startDate.toLocaleDateString(undefined, dateOptions)} endDate={project.endDate?.toLocaleDateString(undefined, dateOptions) ?? "Present"} title={project.name} color="primary" lastItem={lastItem} expanded={expanded}>
+                {step === "closed" && <SectionTimelineItem onClick={() => setStep("expanding")} startDate={project.startDate.toLocaleDateString(undefined, dateOptions)} endDate={project.endDate?.toLocaleDateString(undefined, dateOptions) ?? "Present"} title={project.name} color="primary" lastItem={lastItem} expanded={step !== "closed"}>
 					<div className={`flex flex-col gap-4`}>
 						<div className="text-sm md:text-base" dangerouslySetInnerHTML={{__html: project.briefDesc}}/>
 					</div>
 				</SectionTimelineItem>}
             </ScrollOnceAnimation>
 
-            {expanded && <div className="bg-[#101114] flex flex-col gap-4 my-4 p-4">
+            {step !== "closed" && <motion.div
+				initial={{scaleY: initScaleY}}
+				animate={getAnimation()}
+				onClick={() => setStep("closing")}
+				transition={{duration: 0.3, ease: "easeInOut"}}
+				onAnimationComplete={() => {
+                    if (step === "expanding")
+                        setStep("expanded");
+                    else if (step === "expanded")
+                        setStep("closing");
+                    else if (step === "closing")
+                        setStep("closed");
+                }}
+				className={`bg-[#101114] origin-top flex flex-col gap-4 my-4 p-4`}
+			>
 				<H3>{project.name}</H3>
 
 				<div dangerouslySetInnerHTML={{__html: project.briefDesc}}/>
 
-                {expanded && <div dangerouslySetInnerHTML={{__html: project.longDesc}}/>}
+                {<div dangerouslySetInnerHTML={{__html: project.longDesc}}/>}
 
-                {expanded && <ProjectCarousel project={project}/>}
-			</div>}
+                {<ProjectCarousel project={project}/>}
+			</motion.div>}
         </div>
     );
 };
