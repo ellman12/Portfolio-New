@@ -14,7 +14,7 @@ const Projects: Project[] = [
         name: "MemoryMosaic",
         repoLink: "https://github.com/ellman12/MemoryMosaic",
         briefDesc: "MemoryMosaic is a free and open source photo/video manager, powered by Blazor and PostgreSQL.",
-        longDesc: `I started working on MM when Google Photos announced the end of their free tier. I had been using it for years, so I needed an alternative, and a friend suggested to make my own replacement. I quickly started learning Blazor and PostgreSQL, and a few months later the first version was ready. This is one of my largest projects at over 2500 commits. It's had two updates to add features and ensure functionality decades into the future.`,
+        longDesc: `I started working on MM when Google Photos announced in October 2020 their free tier was ending in July 2021. I had been using it for years, so I needed an alternative, and a friend suggested to make my own replacement. I quickly started learning Blazor and PostgreSQL, and a few months later the first version was ready. This is one of my largest projects at over 2500 commits. It's had two updates to add features and ensure functionality decades into the future.`,
         significance: 100,
         images: [
             ["MM/Home.png", "Home Page"],
@@ -44,7 +44,7 @@ const Projects: Project[] = [
         name: "Graphical Photo Organizer ",
         repoLink: "https://github.com/ellman12/Graphical-Photo-Organizer",
         briefDesc: "A C# WPF utility for organizing folders of photos and videos based on when items were taken.",
-        longDesc: "I created GPO to help family, friends, and others organize their folders of photos and videos. Thus, it was designed to be very simple and easy to use, but with plenty of customization and power user features.",
+        longDesc: "I created GPO to help family, friends, and others organize their folders of photos and videos. Thus, it was designed to be very simple and easy to use, but with plenty of customization and power user features. Overall, I think it achieved this and is a very slick utility.",
         images: [
             ["GPO/GPO1.png", "Main Graphical Photo Organizer Window"],
             // ["GPO/GPO2.png", "Graphical Photo Organizer Settings Window"] //Disabled because of weird scaling issues with Carousel
@@ -57,7 +57,7 @@ const Projects: Project[] = [
         name: "Dish Up",
         repoLink: "https://bitbucket.org/dpdsu/csc-470-project-repo/src/master/",
         briefDesc: "Blazor Server app for creating and sharing recipes with other users.",
-        longDesc: "Me and three others made Dish Up for our Software Engineering class's final product. We really focused on easy creation of recipes and sharing with other users, as well as Markdown and image support. I pitched the original idea and took the role of the product manager and team leader. I successfully lead the project, allowing us to get an A on it.",
+        longDesc: "Me and three others made Dish Up for our Software Engineering class's final product. I pitched the original idea and took the role of the product manager and team leader. I successfully lead the project, allowing us to get an A on it. We really focused on easy creation of recipes and sharing with other users, as well as Markdown and image support.",
         images: [
             ["Dish Up/Dish Up 2.png", "Viewing a Recipe"],
             ["Dish Up/Dish Up 3.png", "Editing a Recipe, and Showing Off Markdown Support"],
@@ -71,7 +71,7 @@ const Projects: Project[] = [
         name: "AutoHotkey Scripts",
         repoLink: "https://github.com/ellman12/AutoHotkey-V2",
         briefDesc: "Extensive repository of AutoHotkey scripts automating many repetitive daily computer tasks.",
-        longDesc: "I discovered AHK in high school, and nothing has been the same since then. It started as a few simple scripts but grew very quickly, and has evolved significantly since then. These scripts have become so ingrained in my daily workflow and muscle memory that I can't live without them. ",
+        longDesc: "I discovered AHK in high school, and nothing has been the same since then. It started as a few simple scripts but grew very quickly, and has evolved significantly since then. These scripts have become so ingrained in my daily workflow and muscle memory that I can't live without them. They have significantly improved my code quality and output.",
         images: [],
         significance: 70,
         startDate: new Date("2019-10-8"),
@@ -91,7 +91,7 @@ const Projects: Project[] = [
         name: "DateTakenExtractor",
         repoLink: "https://github.com/ellman12/DateTakenExtractor",
         briefDesc: "Small, fast, simple NuGet library for reading and writing Date Taken metadata for photos and videos.",
-        longDesc: "DTE is part of what powers MemoryMosaic and Graphical Photo Organizer. DTE is my first NuGet package, and currently has over 6,000 downloads.",
+        longDesc: "DTE is part of what powers MemoryMosaic and Graphical Photo Organizer, and was created to reduce duplication between those projects. DTE is my first NuGet package, and currently has over 6,000 downloads which I am proud about.",
         images: [["DTE/DTE1.png", "Example of using Date Taken Extractor"]],
         significance: 40,
         startDate: new Date("2022-5-4"),
@@ -101,7 +101,7 @@ const Projects: Project[] = [
         name: "Graphical Backup Program",
         repoLink: "https://github.com/ellman12/Graphical-Backup-Program",
         briefDesc: "A C# WinForms utility for backing up groups of files and folders.",
-        longDesc: "One of GBP's best features allows creating groups of related items and controlling which of those groups are backed up. GBP was my first experience creating a GUI, and I'm very happy with how it turned out.",
+        longDesc: "One of GBP's best features allows creating groups of related items and controlling which of those groups are backed up. GBP was my first experience creating a desktop GUI, and I'm very happy with how it turned out.",
         images: [["GBP/GBP_GUI.png", "Main Graphical Backup Program Window"]],
         significance: 30,
         startDate: new Date("2021-7-24"),
@@ -112,7 +112,7 @@ const Projects: Project[] = [
         name: "Password Generator and Guesser",
         repoLink: "https://github.com/ellman12/Password-Generator-and-Guesser",
         briefDesc: "A highly-customizable, superfluous, and over-engineered C++ console application for generating and guessing strings of characters.",
-        longDesc: "I got the idea for this during my Software Security class when the professor mentioned guessing and checking a password over and over. Around that time I also wanted to get experience with command line arguments (flags). Overall, this project is more for learning how to use C++ and how to make flags.",
+        longDesc: "I got the idea for this during my Software Security class when the professor mentioned guessing and checking a password over and over. Around that time I also wanted to get experience with command line arguments. Overall, this project is more for learning how to use C++ and how to make and accept arguments to a program.",
         images: [
             ["PGG/PGG 1.png", "PGG Help Output"],
             ["PGG/PGG 2.png", "Guessing a Password"],
@@ -126,8 +126,8 @@ const Projects: Project[] = [
     {
         name: "TI-BASIC Scripts",
         repoLink: "https://github.com/ellman12/TI-84-Plus-CE",
-        briefDesc: "Various scripts to automate my TI-84 Plus CE graphing calculator",
-        longDesc: "One of my oldest repos on GitHub, dedicated to storing all the little scripts I've written in <a style='color: cornflowerblue' href='https://en.wikipedia.org/wiki/TI-BASIC'>TI-BASIC</a>. I made these to assist in my math classes, so I haven't actually used any of them in years, but I'm hoping someone else benefits from them.",
+        briefDesc: "Various scripts to automate my TI-84 Plus CE graphing calculator.",
+        longDesc: "One of my oldest repos on GitHub, dedicated to storing all the little scripts I've written in <a style='color: cornflowerblue' href='https://en.wikipedia.org/wiki/TI-BASIC'>TI-BASIC</a>. I made these to assist in my math classes, and they quickly became invaluable. I haven't used any of them in years, but I'm hoping someone else benefits from them.",
         images: [],
         significance: 10,
         startDate: new Date("2020-4-16"),
