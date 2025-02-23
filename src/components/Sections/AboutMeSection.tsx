@@ -25,13 +25,13 @@ export default function AboutMeSection() {
                     <div className="grid grid-cols-2 gap-4 sm:px-8 mb-4">
                         <Tidbit icon={<WorkIcon/>} text="KBR — Software Engineer"/>
                         <Tidbit icon={<PlaceIcon/>} text="Sioux Falls, SD"/>
-                        <Tidbit icon={<SchoolIcon/>} text="Computer Science, Dakota State University"/>
+                        <Tidbit icon={<SchoolIcon/>} text="B.S. Computer Science, Dakota State University"/>
                         <Tidbit icon={<ChatIcon/>} text="He/him"/>
                     </div>
                 </ScrollOnceAnimation>
 
                 <ScrollOnceAnimation>
-                    <H3>Hobbies</H3>
+                    <H3 className="pl-4">Hobbies</H3>
 
                     <ScrollOnceAnimation>
                         <div className="mt-6 grid grid-cols-2 gap-4 sm:px-8 mb-4">
