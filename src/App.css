@@ -10,14 +10,3 @@
     user-select: none;
 }
 
-.expandable {
-    transform: scaleY(0.1);
-    transform-origin: top;
-    transition: transform 0.3s ease-in-out;
-    height: auto;
-    overflow: hidden;
-}
-
-.expandable:hover {
-    transform: scaleY(1);
-}
