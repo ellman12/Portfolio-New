@@ -1,6 +1,9 @@
 import {FC, useState} from "react";
 import {Project} from "./Projects.ts";
 import SectionTimelineItem from "../../Timeline/SectionTimelineItem.tsx";
+import ProjectCarousel from "./ProjectCarousel.tsx";
+import H3 from "../../H3.tsx";
+import ScrollOnceAnimation from "../../ScrollOnceAnimation.tsx";
 
 interface Props {
     project: Project;
@@ -12,16 +15,23 @@ const ProjectDisplay: FC<Props> = ({project, lastItem}) => {
 
     return (
         <div onClick={() => setExpanded(!expanded)}>
-            <SectionTimelineItem startDate={project.startDate.toLocaleDateString()} endDate={project.endDate?.toLocaleDateString() ?? "Present"} title={project.name} color="primary" lastItem={lastItem}>
-                <div className="flex flex-col gap-4">
-                    <div dangerouslySetInnerHTML={{__html: project.briefDesc}}/>
+            <ScrollOnceAnimation>
+                {!expanded && <SectionTimelineItem startDate={project.startDate.toLocaleDateString()} endDate={project.endDate?.toLocaleDateString() ?? "Present"} title={project.name} color="primary" lastItem={lastItem} expanded={expanded}>
+					<div className={`flex flex-col gap-4`}>
+						<div dangerouslySetInnerHTML={{__html: project.briefDesc}}/>
+					</div>
+				</SectionTimelineItem>}
+            </ScrollOnceAnimation>
 
-                    {expanded && <div dangerouslySetInnerHTML={{__html: project.longDesc}}/>}
+            {expanded && <div className="bg-[#101114] flex flex-col gap-4 my-4 p-4">
+				<H3>{project.name}</H3>
 
-                    {/* a image slideshow and the alt text is shown below each one */}
+				<div dangerouslySetInnerHTML={{__html: project.briefDesc}}/>
 
-                </div>
-            </SectionTimelineItem>
+                {expanded && <div dangerouslySetInnerHTML={{__html: project.longDesc}}/>}
+
+                {expanded && <ProjectCarousel project={project}/>}
+			</div>}
         </div>
     );
 };

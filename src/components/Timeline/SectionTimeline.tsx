@@ -7,7 +7,7 @@ interface Props {
 
 const SectionTimeline: FC<Props> = ({children}) => {
     return (
-        <Timeline sx={{[`& .${timelineOppositeContentClasses.root}`]: {flex: 0.28}}}>
+        <Timeline sx={{[`& .${timelineOppositeContentClasses.root}`]: {flex: 0.28}, paddingLeft: 0, paddingRight: 0}}>
             {children}
         </Timeline>
     );

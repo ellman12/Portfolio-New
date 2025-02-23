@@ -19,7 +19,6 @@ const Projects: Project[] = [
         images: [
             ["MM/Home.png", "Home Page"],
             ["MM/Import.png", "Import Page"],
-            ["MM/FullscreenViewer.png", "Viewing a Photo"],
             ["MM/VideoPlayer.png", "Viewing a Video"],
             ["MM/Memories.png", "Memories Page"],
             ["MM/Backups.png", "Backups Page"],
@@ -48,7 +47,7 @@ const Projects: Project[] = [
         longDesc: "I created GPO to help family, friends, and others organize their folders of photos and videos. Thus, it was designed to be very simple and easy to use, but with plenty of customization and power user features.",
         images: [
             ["GPO/GPO1.png", "Main Graphical Photo Organizer Window"],
-            ["GPO/GPO2.png", "Graphical Photo Organizer Settings Window"]
+            // ["GPO/GPO2.png", "Graphical Photo Organizer Settings Window"] //Disabled because of weird scaling issues with Carousel
         ],
         significance: 90,
         startDate: new Date("2022-2-21"),
