@@ -8,7 +8,7 @@ export default function WorkExperienceSection() {
     return (
         <ScrollOnceAnimation>
             <Section icon={<WorkIcon/>} title="Work Experience">
-                <p className="mb-4 mx-2 md:mx-8">My professional experience is primarily React, TypeScript, and Tailwind, while my personal projects primarily involve C# and PostgreSQL. I am working on expanding my professional experience out into these areas.</p>
+                <p className="mb-4 mx-2 md:mx-8">My professional experience is primarily React, TypeScript, and Tailwind, while my personal projects primarily involve C# and PostgreSQL. I am expanding my professional experience out into these areas.</p>
 
                 <SectionTimeline>
                     <ScrollOnceAnimation>
