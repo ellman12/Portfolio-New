@@ -17,9 +17,9 @@ export default function ProjectsSection() {
     }
 
     return (
-        <Section icon={<CodeIcon/>} title="Projects" disablePaddingX={expandedProjects.length > 0}>
+        <Section icon={<CodeIcon/>} title="Projects" disablePaddingX>
             <ScrollOnceAnimation>
-                <p className="mb-6 mx-2 md:mx-8">I've developed {Projects.length} personal projects over the years, all of which I'm very proud of. I love making new projects and learning new things along the way. Click any of the projects below to learn more.</p>
+                <p className="mb-6 mx-4 md:mx-12">I've developed {Projects.length} personal projects over the years, all of which I'm very proud of. I love making new projects and learning new things along the way. Click any of the projects below to learn more.</p>
             </ScrollOnceAnimation>
 
             <SectionTimeline>

@@ -9,7 +9,7 @@ interface Props {
 }
 
 const Section: FC<Props> = ({icon, title, disablePaddingX = false, children}) => {
-    const sidePadding = "px-1 md:px-2 lg:px-4 ";
+    const sidePadding = "px-1 sm:px-2 lg:px-4 ";
 
     return (
         <section id={title.toLowerCase().replace(" ", "-")} className="border-t-2 border-white pt-4 pb-8 flex flex-col">
