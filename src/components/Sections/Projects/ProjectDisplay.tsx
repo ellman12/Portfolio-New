@@ -8,10 +8,11 @@ import {AnimatePresence, motion} from "framer-motion";
 
 interface Props {
     project: Project;
+    handleProjectClick: (projects: Project, add: boolean) => void;
     lastItem: boolean;
 }
 
-const ProjectDisplay: FC<Props> = ({project, lastItem}) => {
+const ProjectDisplay: FC<Props> = ({project, handleProjectClick, lastItem}) => {
     const [step, setStep] = useState<"closed" | "expanding" | "expanded" | "closing">("closed");
 
     const initMaxHeight = 50;
@@ -25,7 +26,7 @@ const ProjectDisplay: FC<Props> = ({project, lastItem}) => {
     return (
         <div>
             <ScrollOnceAnimation>
-                {step === "closed" && <SectionTimelineItem onClick={() => setStep("expanding")} startDate={project.startDate.toLocaleDateString(undefined, dateOptions)} endDate={project.endDate?.toLocaleDateString(undefined, dateOptions) ?? "Present"} title={project.name} color="primary" lastItem={lastItem} expanded={step !== "closed"}>
+                {step === "closed" && <SectionTimelineItem onClick={() => {setStep("expanding"); handleProjectClick(project, true)}} startDate={project.startDate.toLocaleDateString(undefined, dateOptions)} endDate={project.endDate?.toLocaleDateString(undefined, dateOptions) ?? "Present"} title={project.name} color="primary" lastItem={lastItem} expanded={step !== "closed"}>
 					<div className={`flex flex-col gap-4`}>
 						<div className="text-sm md:text-base" dangerouslySetInnerHTML={{__html: project.briefDesc}}/>
 					</div>
@@ -38,7 +39,9 @@ const ProjectDisplay: FC<Props> = ({project, lastItem}) => {
 					initial={{maxHeight: initMaxHeight}}
 					animate={step === "expanding" || step === "expanded" ? {maxHeight: 1000} : {maxHeight: initMaxHeight}}
 					onClick={() => {
-                        if (step !== "expanding")
+                        if (step === "expanding")
+                            handleProjectClick(project, false);
+                        else
                             setStep("closing");
                     }}
 					transition={{duration: 0.6, ease: "easeInOut"}}
@@ -48,8 +51,10 @@ const ProjectDisplay: FC<Props> = ({project, lastItem}) => {
                             setStep("expanded");
                         else if (step === "expanded")
                             setStep("closing");
-                        else if (step === "closing")
+                        else if (step === "closing") {
+                            handleProjectClick(project, false);
                             setStep("closed");
+                        }
                     }}
 					className={`bg-[#101114] overflow-hidden flex flex-col gap-4 my-4 p-4`}
 				>
