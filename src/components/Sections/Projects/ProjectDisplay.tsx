@@ -27,47 +27,47 @@ const ProjectDisplay: FC<Props> = ({project, handleProjectClick, expandedProject
     return (
         <div>
             <ScrollOnceAnimation>
-                {step === "closed" && <SectionTimelineItem onClick={() => {setStep("expanding"); handleProjectClick(project, true)}} startDate={project.startDate.toLocaleDateString(undefined, dateOptions)} endDate={project.endDate?.toLocaleDateString(undefined, dateOptions) ?? "Present"} title={project.name} color="primary" lastItem={lastItem} expanded={step !== "closed"}>
+                <SectionTimelineItem onClick={() => {setStep("expanding"); handleProjectClick(project, true)}} startDate={project.startDate.toLocaleDateString(undefined, dateOptions)} endDate={project.endDate?.toLocaleDateString(undefined, dateOptions) ?? "Present"} title={project.name} color="primary" lastItem={lastItem} expanded={step !== "closed"}>
 					<div className={`flex flex-col gap-4`}>
 						<div className="text-sm md:text-base" dangerouslySetInnerHTML={{__html: project.briefDesc}}/>
 					</div>
-				</SectionTimelineItem>}
+				</SectionTimelineItem>
             </ScrollOnceAnimation>
 
-            <AnimatePresence initial={false}>
-                {step !== "closed" && <motion.div
-					key={project.name}
-					initial={{maxHeight: initMaxHeight}}
-					animate={step === "expanding" || step === "expanded" ? {maxHeight: 1000} : {maxHeight: initMaxHeight}}
-					onClick={() => {
-                        if (step === "expanding" && expandedProjects.find(p => p.name === project.name) !== undefined) {
-                            handleProjectClick(project, false);
-                        } else
-                            setStep("closing");
-                    }}
-					transition={{duration: 0.6, ease: "easeInOut"}}
-					exit={{maxHeight: initMaxHeight}}
-					onAnimationComplete={() => {
-                        if (step === "expanding")
-                            setStep("expanded");
-                        else if (step === "expanded")
-                            setStep("closing");
-                        else if (step === "closing") {
-                            handleProjectClick(project, false);
-                            setStep("closed");
-                        }
-                    }}
-					className={`bg-[#101114] overflow-hidden flex flex-col gap-4 my-4 p-4`}
-				>
-					<H3>{project.name}</H3>
+            {/*<AnimatePresence initial={false}>*/}
+            {/*    {step !== "closed" && <motion.div*/}
+			{/*		key={project.name}*/}
+			{/*		initial={{maxHeight: initMaxHeight}}*/}
+			{/*		animate={step === "expanding" || step === "expanded" ? {maxHeight: 1000} : {maxHeight: initMaxHeight}}*/}
+			{/*		onClick={() => {*/}
+            {/*            if (step === "expanding" && expandedProjects.find(p => p.name === project.name) !== undefined) {*/}
+            {/*                handleProjectClick(project, false);*/}
+            {/*            } else*/}
+            {/*                setStep("closing");*/}
+            {/*        }}*/}
+			{/*		transition={{duration: 0.6, ease: "easeInOut"}}*/}
+			{/*		exit={{maxHeight: initMaxHeight}}*/}
+			{/*		onAnimationComplete={() => {*/}
+            {/*            if (step === "expanding")*/}
+            {/*                setStep("expanded");*/}
+            {/*            else if (step === "expanded")*/}
+            {/*                setStep("closing");*/}
+            {/*            else if (step === "closing") {*/}
+            {/*                handleProjectClick(project, false);*/}
+            {/*                setStep("closed");*/}
+            {/*            }*/}
+            {/*        }}*/}
+			{/*		className={`bg-[#101114] overflow-hidden flex flex-col gap-4 my-4 p-4`}*/}
+			{/*	>*/}
+			{/*		<H3>{project.name}</H3>*/}
 
-					<div dangerouslySetInnerHTML={{__html: project.briefDesc}}/>
+			{/*		<div dangerouslySetInnerHTML={{__html: project.briefDesc}}/>*/}
 
-					<div dangerouslySetInnerHTML={{__html: project.longDesc}}/>
+			{/*		<div dangerouslySetInnerHTML={{__html: project.longDesc}}/>*/}
 
-                    {<ProjectCarousel project={project}/>}
-				</motion.div>}
-            </AnimatePresence>
+            {/*        {<ProjectCarousel project={project}/>}*/}
+			{/*	</motion.div>}*/}
+            {/*</AnimatePresence>*/}
         </div>
     );
 };

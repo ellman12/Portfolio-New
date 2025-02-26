@@ -1,6 +1,7 @@
 import {ComponentProps, FC, ReactNode} from "react";
 import {OverridableStringUnion} from "@mui/types";
 import {TimelineConnector, TimelineContent, TimelineDot, TimelineDotPropsColorOverrides, TimelineItem, TimelineOppositeContent, TimelineSeparator} from "@mui/lab";
+import {motion} from "framer-motion";
 
 type Props = {
     startDate: string;
@@ -15,17 +16,22 @@ type Props = {
 
 const SectionTimelineItem: FC<Props> = ({startDate, endDate, title, onClick = () => {}, expanded = false, lastItem = false, color, children}) => {
     return (
-        <TimelineItem className={`${expanded ? "my-4" : ""}`} onClick={onClick}>
-            {!expanded && <TimelineOppositeContent>
-				<div className="inline-flex flex-row justify-end md:items-center flex-wrap md:flex-nowrap text-xs lg:text-base">
-					<span className="text-nowrap">{startDate}—</span>
-					<span className="text-nowrap">{endDate}</span>
-				</div>
-			</TimelineOppositeContent>}
-            {!expanded && <TimelineSeparator>
-				<TimelineDot color={color}/>
+        <TimelineItem onClick={onClick}>
+            <motion.div
+                initial={{width: 240}}
+                animate={expanded ? {width: 0} : {width: 240}}
+                transition={{duration: 0.5, ease: "easeInOut"}}
+                className="text-nowrap object-contain overflow-clip"
+            >
+                <TimelineOppositeContent>
+                    <span className="text-nowrap">{startDate}—</span>
+                    <span className="text-nowrap">{endDate}</span>
+                </TimelineOppositeContent>
+            </motion.div>
+            <TimelineSeparator>
+                <TimelineDot color={color}/>
                 {lastItem ? <></> : <TimelineConnector/>}
-			</TimelineSeparator>}
+            </TimelineSeparator>
             <TimelineContent>
                 <div className="mb-4">
                     <p className="font-bold text-sm md:text-base">{title}</p>

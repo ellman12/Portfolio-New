@@ -10,3 +10,6 @@
     user-select: none;
 }
 
+li::before {
+    display: none;
+}
