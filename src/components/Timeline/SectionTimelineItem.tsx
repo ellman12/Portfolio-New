@@ -32,7 +32,7 @@ const SectionTimelineItem: FC<Props> = ({startDate, endDate, title, onClick = ()
             <motion.div
                 initial={{opacity: 1, width: 12}}
                 animate={expanded ? {opacity: 0, width: 0} : {opacity: 1, width: 12}}
-                transition={{duration: 0.5, ease: "easeInOut"}}
+                transition={{duration: 0.8, ease: "easeInOut"}}
                 className="flex"
             >
                 <TimelineSeparator>
@@ -41,14 +41,21 @@ const SectionTimelineItem: FC<Props> = ({startDate, endDate, title, onClick = ()
                 </TimelineSeparator>
             </motion.div>
 
-            <TimelineContent style={{backgroundColor: expanded ? "black" : ""}}>
-                <div className="mb-4">
-                    <p className="font-bold text-sm md:text-base">{title}</p>
+            <TimelineContent style={expanded ? {padding: 0} : {}}>
+                <motion.div
+                    initial={{backgroundColor: "#00000000"}}
+                    animate={expanded ? {backgroundColor: "#000000", padding: 16} : {backgroundColor: "#00000000"}}
+                    transition={{duration: 0.5, ease: "easeInOut"}}
+                    className={`${expanded ? "p-0 my-4" : ""}`}
+                >
+                    <div className="mb-4">
+                        <p className="font-bold text-sm md:text-base">{title}</p>
 
-                    <div className="md:pl-2">
-                        {children}
+                        <div className="md:pl-2">
+                            {children}
+                        </div>
                     </div>
-                </div>
+                </motion.div>
             </TimelineContent>
         </TimelineItem>
     );
