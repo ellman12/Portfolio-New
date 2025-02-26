@@ -4,7 +4,6 @@ import SectionTimelineItem from "../../Timeline/SectionTimelineItem.tsx";
 import ProjectCarousel from "./ProjectCarousel.tsx";
 import H3 from "../../H3.tsx";
 import ScrollOnceAnimation from "../../ScrollOnceAnimation.tsx";
-import {AnimatePresence, motion} from "framer-motion";
 
 interface Props {
     project: Project;
@@ -14,9 +13,10 @@ interface Props {
 }
 
 const ProjectDisplay: FC<Props> = ({project, handleProjectClick, expandedProjects, lastItem}) => {
-    const [step, setStep] = useState<"closed" | "expanding" | "expanded" | "closing">("closed");
+    // const [step, setStep] = useState<"closed" | "expanding" | "expanded" | "closing">("closed");
+    const [expanded, setExpanded] = useState(false);
 
-    const initMaxHeight = 50;
+    // const initMaxHeight = 50;
 
     const dateOptions: Intl.DateTimeFormatOptions = {
         day: "2-digit",
@@ -27,7 +27,7 @@ const ProjectDisplay: FC<Props> = ({project, handleProjectClick, expandedProject
     return (
         <div>
             <ScrollOnceAnimation>
-                <SectionTimelineItem onClick={() => {setStep("expanding"); handleProjectClick(project, true)}} startDate={project.startDate.toLocaleDateString(undefined, dateOptions)} endDate={project.endDate?.toLocaleDateString(undefined, dateOptions) ?? "Present"} title={project.name} color="primary" lastItem={lastItem} expanded={step !== "closed"}>
+                <SectionTimelineItem onClick={() => {setExpanded(!expanded); handleProjectClick(project, expanded)}} startDate={project.startDate.toLocaleDateString(undefined, dateOptions)} endDate={project.endDate?.toLocaleDateString(undefined, dateOptions) ?? "Present"} title={project.name} color="primary" lastItem={lastItem} expanded={expanded}>
 					<div className={`flex flex-col gap-4`}>
 						<div className="text-sm md:text-base" dangerouslySetInnerHTML={{__html: project.briefDesc}}/>
 					</div>

@@ -28,11 +28,20 @@ const SectionTimelineItem: FC<Props> = ({startDate, endDate, title, onClick = ()
                     <span className="text-nowrap">{endDate}</span>
                 </TimelineOppositeContent>
             </motion.div>
-            <TimelineSeparator>
-                <TimelineDot color={color}/>
-                {lastItem ? <></> : <TimelineConnector/>}
-            </TimelineSeparator>
-            <TimelineContent>
+
+            <motion.div
+                initial={{opacity: 1, width: 12}}
+                animate={expanded ? {opacity: 0, width: 0} : {opacity: 1, width: 12}}
+                transition={{duration: 0.5, ease: "easeInOut"}}
+                className="flex"
+            >
+                <TimelineSeparator>
+                    <TimelineDot color={color}/>
+                    {lastItem ? <></> : <TimelineConnector/>}
+                </TimelineSeparator>
+            </motion.div>
+
+            <TimelineContent style={{backgroundColor: expanded ? "black" : ""}}>
                 <div className="mb-4">
                     <p className="font-bold text-sm md:text-base">{title}</p>
 
