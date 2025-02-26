@@ -1,4 +1,4 @@
-import {ComponentProps, FC, ReactNode} from "react";
+import {ComponentProps, FC, ReactNode, useState} from "react";
 import {OverridableStringUnion} from "@mui/types";
 import {TimelineConnector, TimelineContent, TimelineDot, TimelineDotPropsColorOverrides, TimelineItem, TimelineOppositeContent, TimelineSeparator} from "@mui/lab";
 import {motion} from "framer-motion";
@@ -7,19 +7,27 @@ type Props = {
     startDate: string;
     endDate: string;
     title: string;
-    onClick?: () => void;
     color: OverridableStringUnion<"primary" | "secondary" | "error" | "warning" | "info" | "success", TimelineDotPropsColorOverrides>;
-    expanded?: boolean;
     lastItem?: boolean;
     children: ReactNode;
+    expandedChildren?: ReactNode;
 } & Omit<ComponentProps<typeof TimelineDot>, "color">;
 
-const SectionTimelineItem: FC<Props> = ({startDate, endDate, title, onClick = () => {}, expanded = false, lastItem = false, color, children}) => {
+const SectionTimelineItem: FC<Props> = ({startDate, endDate, title, lastItem = false, color, children, expandedChildren = <></>}) => {
+    const [step, setStep] = useState<"closed" | "widening" | "extending">("closed");
+
+    function onClick() {
+        if (step === "closed")
+            setStep("widening")
+        else if (step === "extending")
+            setStep("closed")
+    }
+
     return (
         <TimelineItem onClick={onClick}>
             <motion.div
                 initial={{width: 240}}
-                animate={expanded ? {width: 0} : {width: 240}}
+                animate={step !== "closed" ? {width: 0} : {width: 240}}
                 transition={{duration: 0.5, ease: "easeInOut"}}
                 className="text-nowrap object-contain overflow-clip"
             >
@@ -31,9 +39,13 @@ const SectionTimelineItem: FC<Props> = ({startDate, endDate, title, onClick = ()
 
             <motion.div
                 initial={{opacity: 1, width: 12}}
-                animate={expanded ? {opacity: 0, width: 0} : {opacity: 1, width: 12}}
-                transition={{duration: 0.8, ease: "easeInOut"}}
+                animate={step !== "closed" ? {opacity: 0, width: 0} : {opacity: 1, width: 12}}
+                transition={{duration: 0.5, ease: "easeInOut"}}
                 className="flex"
+                onAnimationComplete={() => {
+                    if (step === "widening")
+                        setStep("extending");
+                }}
             >
                 <TimelineSeparator>
                     <TimelineDot color={color}/>
@@ -41,12 +53,12 @@ const SectionTimelineItem: FC<Props> = ({startDate, endDate, title, onClick = ()
                 </TimelineSeparator>
             </motion.div>
 
-            <TimelineContent style={expanded ? {padding: 0} : {}}>
+            <TimelineContent style={{padding: step !== "closed" ? 0 : "", objectFit: "contain", overflow: "hidden"}}>
                 <motion.div
                     initial={{backgroundColor: "#00000000"}}
-                    animate={expanded ? {backgroundColor: "#000000", padding: 16} : {backgroundColor: "#00000000"}}
+                    animate={step !== "closed" ? {backgroundColor: "#000000", padding: 16} : {backgroundColor: "#00000000"}}
                     transition={{duration: 0.5, ease: "easeInOut"}}
-                    className={`${expanded ? "p-0 my-4" : ""}`}
+                    className={`${step !== "closed" ? "p-0 my-4" : ""}`}
                 >
                     <div className="mb-4">
                         <p className="font-bold text-sm md:text-base">{title}</p>
@@ -55,6 +67,20 @@ const SectionTimelineItem: FC<Props> = ({startDate, endDate, title, onClick = ()
                             {children}
                         </div>
                     </div>
+
+                    <motion.div
+                        className={`object-contain overflow-hidden max-w-full flex flex-col gap-4 ${step !== "closed" ? "my-4 px-2" : ""}`}
+                        initial={{maxHeight: 0}}
+                        animate={step === "extending" ? {maxHeight: 1000} : {maxHeight: 0}}
+                        onClick={() => {
+                        }}
+                        transition={{duration: 0.6, ease: "easeInOut"}}
+                        exit={{maxHeight: 0}}
+                        onAnimationComplete={() => {
+                        }}
+                    >
+                        {expandedChildren}
+                    </motion.div>
                 </motion.div>
             </TimelineContent>
         </TimelineItem>
