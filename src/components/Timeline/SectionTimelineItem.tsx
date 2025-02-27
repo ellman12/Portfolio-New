@@ -71,7 +71,7 @@ const SectionTimelineItem: FC<Props> = ({startDate, endDate, title, lastItem = f
                     </div>
 
                     <motion.div
-                        className={`object-contain overflow-hidden max-w-full flex flex-col gap-4`}
+                        className={`object-contain overflow-hidden max-w-full flex flex-col gap-4 text-sm md:text-base`}
                         initial={{maxHeight: 0}}
                         animate={step === "openingTall" || step === "opened" ? {maxHeight: 1000} : {maxHeight: 0}}
                         transition={{duration: 0.6, ease: "easeInOut"}}
