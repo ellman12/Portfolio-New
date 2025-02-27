@@ -81,7 +81,7 @@ const SectionTimelineItem: FC<Props> = ({startDate, endDate, title, lastItem = f
                     transition={{duration: 0.5, ease: "easeInOut"}}
                 >
                     <div className="mb-4 pl-4 pr-4">
-                        <p className="font-bold text-sm md:text-base">{title}</p>
+                        <p className="font-semibold text-sm md:text-base">{title}</p>
 
                         {children}
                     </div>

@@ -1,15 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 @import "tailwindcss";
 
-@import "@fontsource/roboto/300.css";
-@import "@fontsource/roboto/400.css";
-@import "@fontsource/roboto/500.css";
-@import "@fontsource/roboto/700.css";
-
-:root {
+* {
     color: white;
     user-select: none;
+    font-family: "Roboto", sans-serif;
 }
 
+/* Fixes dumb issue with Material UI Timeline */
 li::before {
     display: none;
 }
