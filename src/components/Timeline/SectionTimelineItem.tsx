@@ -27,7 +27,7 @@ const SectionTimelineItem: FC<Props> = ({startDate, endDate, title, lastItem = f
     }
 
     return (
-        <TimelineItem onClick={onClick}>
+        <TimelineItem onClick={onClick} className={`${expandedChildren !== undefined ? "cursor-pointer" : ""}`}>
             <motion.div
                 initial={{width: 240}}
                 animate={step !== "closed" && step !== "closingWide" ? {width: 0} : {width: 240}}
