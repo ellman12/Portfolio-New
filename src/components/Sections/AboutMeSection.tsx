@@ -7,14 +7,13 @@ import PlaceIcon from "@mui/icons-material/Place";
 import SchoolIcon from "@mui/icons-material/School";
 import PersonIcon from "@mui/icons-material/Person";
 import AdsClickIcon from "@mui/icons-material/AdsClick";
-import OutdoorGrillIcon from '@mui/icons-material/OutdoorGrill';
-import CasinoIcon from '@mui/icons-material/Casino';
-import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
-import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
-import CodeIcon from '@mui/icons-material/Code';
-import PrecisionManufacturingIcon from '@mui/icons-material/PrecisionManufacturing';
-import PedalBikeIcon from '@mui/icons-material/PedalBike';
-import HikingIcon from '@mui/icons-material/Hiking';
+import OutdoorGrillIcon from "@mui/icons-material/OutdoorGrill";
+import CasinoIcon from "@mui/icons-material/Casino";
+import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
+import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
+import PrecisionManufacturingIcon from "@mui/icons-material/PrecisionManufacturing";
+import PedalBikeIcon from "@mui/icons-material/PedalBike";
+import HikingIcon from "@mui/icons-material/Hiking";
 import ScrollOnceAnimation from "../ScrollOnceAnimation.tsx";
 
 export default function AboutMeSection() {
@@ -45,10 +44,9 @@ export default function AboutMeSection() {
                             <Tidbit icon={<AdsClickIcon/>}>Archery</Tidbit>
                             <Tidbit icon={<PedalBikeIcon/>}>Biking</Tidbit>
                             <Tidbit icon={<OutdoorGrillIcon/>}>Cooking</Tidbit>
-                            <Tidbit icon={<CodeIcon/>}>Coding</Tidbit>
                             <Tidbit icon={<CasinoIcon/>}>D&D</Tidbit>
                             <Tidbit icon={<FitnessCenterIcon/>}>Exercise</Tidbit>
-                            <Tidbit icon={<SportsEsportsIcon/>}>Gaming</Tidbit>
+                            <Tidbit icon={<SportsEsportsIcon/>}>Game Design</Tidbit>
                             <Tidbit icon={<HikingIcon/>}>Hiking</Tidbit>
                             <Tidbit icon={<PrecisionManufacturingIcon/>}>Robotics</Tidbit>
                         </div>
