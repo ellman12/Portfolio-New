@@ -35,7 +35,11 @@ const Projects: Project[] = [
         repoLink: "https://github.com/ellman12/WingTechBot-Mk-2",
         briefDesc: "A Discord bot written in C# for a friend's private Discord server, providing features like a reaction tracking and karma system, games, and inside jokes.",
         longDesc: `There were some limitations with the original bot, primarily with its karma system. After some discussions about the minimum viable product, I spent a few weeks on the rewrite. In addition to gaining AWS experience, I wanted more experience with automated testing. Mk 2 has extensive unit/integration tests which are very satisfying and ensure reliability.`,
-        images: [],
+        images: [
+            ["WTB/WTB 1.png", "Karma Leaderboard"],
+            ["WTB/WTB 2.png", "Game of Hangman"],
+            ["WTB/WTB 3.png", "Reaction Tracking"],
+        ],
         significance: 95,
         startDate: new Date("2024-12-22"),
         endDate: new Date("2025-02-11")
