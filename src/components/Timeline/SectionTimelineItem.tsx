@@ -2,6 +2,7 @@ import {ComponentProps, FC, ReactNode, useState} from "react";
 import {OverridableStringUnion} from "@mui/types";
 import {TimelineConnector, TimelineContent, TimelineDot, TimelineDotPropsColorOverrides, TimelineItem, TimelineOppositeContent, TimelineSeparator} from "@mui/lab";
 import {motion} from "framer-motion";
+import { useWindowSize } from "@uidotdev/usehooks";
 
 type Props = {
     startDate: string;
@@ -15,6 +16,19 @@ type Props = {
 
 const SectionTimelineItem: FC<Props> = ({startDate, endDate, title, lastItem = false, color, children, expandedChildren = undefined}) => {
     const [step, setStep] = useState<"closed" | "openingWide" | "closingWide" | "openingTall" | "closingTall" | "opened">("closed");
+    const {width} = useWindowSize();
+
+    function getDateRangeWidth() {
+        if (width == null)
+            return 0;
+
+        if (width >= 1536) return 240;
+        if (width >= 1280) return 240;
+        if (width >= 1024) return 240;
+        if (width >= 768) return 180;
+        if (width >= 640) return 120;
+        return 120;
+    }
 
     function onClick() {
         if (expandedChildren === undefined)
@@ -29,14 +43,16 @@ const SectionTimelineItem: FC<Props> = ({startDate, endDate, title, lastItem = f
     return (
         <TimelineItem onClick={onClick} className={`${expandedChildren !== undefined ? "cursor-pointer" : ""}`}>
             <motion.div
-                initial={{width: 240}}
-                animate={step !== "closed" && step !== "closingWide" ? {width: 0} : {width: 240}}
+                initial={{width: getDateRangeWidth()}}
+                animate={step !== "closed" && step !== "closingWide" ? {width: 0} : {width: getDateRangeWidth()}}
                 transition={{duration: 0.5, ease: "easeInOut"}}
                 className="text-nowrap object-contain overflow-clip"
             >
                 <TimelineOppositeContent>
-                    <span className="text-nowrap">{startDate}—</span>
-                    <span className="text-nowrap">{endDate}</span>
+                    <div className="inline-flex flex-row justify-end md:items-center flex-wrap md:flex-nowrap text-xs lg:text-base">
+                        <span className="text-nowrap">{startDate}—</span>
+                        <span className="text-nowrap">{endDate}</span>
+                    </div>
                 </TimelineOppositeContent>
             </motion.div>
 
