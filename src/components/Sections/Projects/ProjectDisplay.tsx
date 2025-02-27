@@ -17,7 +17,7 @@ const ProjectDisplay: FC<Props> = ({project, lastItem}) => {
     };
 
     const expandedChildren = () => (<>
-        <div className="mb-4" dangerouslySetInnerHTML={{__html: project.longDesc}}/>
+        <div className="mb-4 px-4 text-justify" dangerouslySetInnerHTML={{__html: project.longDesc}}/>
 
         {<ProjectCarousel project={project}/>}
     </>);
