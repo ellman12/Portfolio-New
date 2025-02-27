@@ -14,7 +14,7 @@ const Projects: Project[] = [
         name: "MemoryMosaic",
         repoLink: "https://github.com/ellman12/MemoryMosaic",
         briefDesc: "MemoryMosaic is a free and open source photo/video manager, powered by Blazor and PostgreSQL.",
-        longDesc: `I started working on MM when Google Photos announced in October 2020 their free tier was ending in July 2021. I had been using it for years, so I needed an alternative, and a friend suggested to make my own replacement. I quickly started learning Blazor and PostgreSQL, and a few months later the first version was ready. This is one of my largest projects at over 2500 commits. It's had two updates to add features and ensure functionality decades into the future.`,
+        longDesc: `I started working on MM when Google Photos announced in October 2020 their free tier was ending in July 2021. I had been using it for years, so I needed an alternative, and a friend suggested to make my own replacement. I quickly started learning Blazor and PostgreSQL, and a few months later the first version was ready. This is one of my largest projects at over 2500 commits, and it's had two major updates to add features and ensure functionality decades into the future.`,
         significance: 100,
         images: [
             ["MM/Home.png", "Home Page"],
@@ -33,7 +33,7 @@ const Projects: Project[] = [
     {
         name: "WingTech Bot Mk 2",
         repoLink: "https://github.com/ellman12/WingTechBot-Mk-2",
-        briefDesc: "WingTech Bot Mk 2 is a bot written in C# for a friend's private Discord server, providing features like a reaction tracking and karma system, games, and inside jokes.",
+        briefDesc: "A Discord bot written in C# for a friend's private Discord server, providing features like a reaction tracking and karma system, games, and inside jokes.",
         longDesc: `There were some limitations with the original bot, primarily with its karma system. After some discussions about the minimum viable product, I spent a few weeks on the rewrite. In addition to gaining AWS experience, I wanted more experience with automated testing. Mk 2 has extensive unit/integration tests which are very satisfying and ensure reliability.`,
         images: [],
         significance: 95,
@@ -80,7 +80,7 @@ const Projects: Project[] = [
     {
         name: "Arcane Defense",
         repoLink: "https://github.com/ellman12/Arcane-Defense",
-        briefDesc: "Final project for my GAME 222 class. Defend your house from an endless horde of enemies using your arsenal of magical attacks. Play the game <a style='color: cornflowerblue' target='_blank' href='https://simmer.io/@ellman13/arcane-defense'>here</a>!",
+        briefDesc: "Final project for my game design class. Defend your house from an endless horde of enemies using your arsenal of magical attacks. Play the game <a style='color: cornflowerblue' target='_blank' href='https://simmer.io/@ellman13/arcane-defense'>here</a>!",
         longDesc: `This is easily one of my favorite projects I've done. Not only was it fun to come up with the ideas and implement them, but seeing people enjoy them was so rewarding.`,
         images: [],
         significance: 60,
@@ -101,7 +101,7 @@ const Projects: Project[] = [
         name: "Graphical Backup Program",
         repoLink: "https://github.com/ellman12/Graphical-Backup-Program",
         briefDesc: "A C# WinForms utility for backing up groups of files and folders.",
-        longDesc: "One of GBP's best features allows creating groups of related items and controlling which of those groups are backed up. GBP was my first experience creating a desktop GUI, and I'm very happy with how it turned out.",
+        longDesc: "I made GBP to facilitate backing up common data. One of its best features allows creating groups of related items and controlling which of those groups are backed up. GBP was my first experience creating a desktop GUI, and I'm very happy with how it turned out.",
         images: [["GBP/GBP_GUI.png", "Main Graphical Backup Program Window"]],
         significance: 30,
         startDate: new Date("2021-7-24"),
