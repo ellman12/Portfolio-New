@@ -22,7 +22,7 @@ export default function AboutMeSection() {
             <div className="flex flex-col gap-4">
                 <ScrollOnceAnimation>
                     <div className="grid grid-cols-2 gap-4 sm:px-8 mb-4">
-                        <Tidbit icon={<WorkIcon/>}>KBR — Software Engineer</Tidbit>
+                        <Tidbit icon={<WorkIcon/>}>Software Engineer at KBR</Tidbit>
                         <Tidbit icon={<PlaceIcon/>}>Sioux Falls, SD</Tidbit>
 
                         <Tidbit icon={<SchoolIcon/>}>
