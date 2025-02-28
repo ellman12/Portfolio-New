@@ -5,6 +5,6 @@ interface Props {
     className?: string;
 }
 
-const H3: FC<Props> = ({children, className = ""}) => <h2 className={`text-xl ${className}`}>{children}</h2>
+const H3: FC<Props> = ({children, className = ""}) => <h2 className={`text-lg ${className}`}>{children}</h2>
 
 export default H3;
