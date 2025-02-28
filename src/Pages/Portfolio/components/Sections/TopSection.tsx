@@ -6,12 +6,13 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import DescriptionIcon from "@mui/icons-material/Description";
+import Title from "../../../components/Title.tsx";
 
 export default function TopSection() {
     return (
         <header className="h-screen flex flex-col justify-center">
             <div className="flex flex-col items-center gap-8">
-                <h1 className="text-4xl md:text-6xl">Elliott DuCharme</h1>
+                <Title/>
                 <H2>Software Engineer, Web Developer</H2>
                 <Avatar/>
 
