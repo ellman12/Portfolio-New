@@ -1,4 +1,5 @@
 import TopSection from "./components/Sections/TopSection.tsx";
+import SkillsSection from "./components/Sections/SkillsSection.tsx";
 
 
 export default function Resume() {
@@ -6,5 +7,6 @@ export default function Resume() {
         <title>Elliott DuCharme Resume</title>
 
         <TopSection/>
+        <SkillsSection/>
     </div>);
 }

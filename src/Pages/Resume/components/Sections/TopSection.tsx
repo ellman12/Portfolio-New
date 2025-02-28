@@ -7,7 +7,7 @@ import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 
 export default function TopSection() {
     return (
-        <div className="flex flex-row justify-between">
+        <div className="flex flex-row items-center justify-between">
             <div className="flex flex-col">
                 <Title/>
             </div>
@@ -19,8 +19,8 @@ export default function TopSection() {
                 </div>
 
                 <LinkWithIcon href="mailto:ellduc4@gmail.com" icon={<EmailIcon/>}>ellduc4@gmail.com</LinkWithIcon>
-                <LinkWithIcon href="http://github.com/ellman12" icon={<GitHubIcon/>}>github/ellman12</LinkWithIcon>
-                <LinkWithIcon href="http://linkedin.com/in/elliott-ducharme" icon={<LinkedInIcon/>}>linkedin/elliott-ducharme</LinkWithIcon>
+                <LinkWithIcon href="http://github.com/ellman12" icon={<GitHubIcon/>}>ellman12</LinkWithIcon>
+                <LinkWithIcon href="http://linkedin.com/in/elliott-ducharme" icon={<LinkedInIcon/>}>elliott-ducharme</LinkWithIcon>
             </div>
         </div>
     );
