@@ -1,14 +1,21 @@
 import "./App.css";
-import Home from "./Home.tsx";
+import Portfolio from "./Pages/Portfolio/Portfolio.tsx";
+import Resume from "./Pages/Resume/Resume.tsx";
 import {ThemeProvider} from "@mui/material";
 import ExtendedTheme from "./ThemeExtensions.ts";
+import {Route, Routes, BrowserRouter} from "react-router-dom";
 
 export default function App() {
     return (
-        <ThemeProvider theme={ExtendedTheme}>
         <div className="bg-[#343A40] h-full w-full">
-            <Home/>
+            <ThemeProvider theme={ExtendedTheme}>
+                <BrowserRouter>
+                    <Routes>
+                        <Route path="/Portfolio" element={<Portfolio/>}/>
+                        <Route path="/Portfolio/Resume" element={<Resume/>}/>
+                    </Routes>
+                </BrowserRouter>
+            </ThemeProvider>
         </div>
-        </ThemeProvider>
     );
 }
