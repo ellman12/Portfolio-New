@@ -50,7 +50,7 @@ const SectionTimelineItem: FC<Props> = ({startDate, endDate, title, lastItem = f
             >
                 <TimelineOppositeContent>
                     <div className="inline-flex flex-row justify-end md:items-center flex-wrap md:flex-nowrap text-xs lg:text-base">
-                        <span className="text-nowrap">{startDate}—</span>
+                        <span className="text-nowrap">{startDate}–</span>
                         <span className="text-nowrap">{endDate}</span>
                     </div>
                 </TimelineOppositeContent>
